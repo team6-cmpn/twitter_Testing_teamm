@@ -12,7 +12,11 @@ class TwitterHomePage(unittest.TestCase):
         s = Service('C:\Program Files (x86)/chromedriver.exe')
         self.driver = webdriver.Chrome(service=s)
         #self.driver = webdriver.Chrome("C:\Program Files (x86)\chromedriver.exe")
-        self.driver.get("http://localhost:3000/")
+        
+        #s = Service('C:\Program Files (x86)/msedgedriver.exe')
+        #self.driver = webdriver.Edge(service=s)
+
+        self.driver.get("http://www.twi-jay.xyz/")
         self.driver.maximize_window()
         
         
@@ -58,8 +62,8 @@ class TwitterHomePage(unittest.TestCase):
         
         
 
-    def test_SignIn(self):
-        
+    '''def test_SignIn(self):
+        #El Front end me7tageen yezawedo id le zorar el next 2esmo nexttButton
 
         #Load the main page. In this case the home page of Python.org.
         main_page = page.MainPage(self.driver)
@@ -69,7 +73,7 @@ class TwitterHomePage(unittest.TestCase):
         signIn_Page.enter_EmailOrUsername("@OmarGabr")
         signIn_Page.click_Next()
         signIn_Page.enter_Password('abcdeFg123_')
-        self.assertFalse(signIn_Page.click_LogIn())
+        self.assertFalse(signIn_Page.click_LogIn())'''
 
         
 
@@ -86,10 +90,10 @@ class TwitterHomePage(unittest.TestCase):
         Enter_Google_Email_Page = page.EnterGoogleEmailPage(self.driver)
         (Enter_Google_Email_Page.click_EnterEmail("mohamed.k.elrafie@gmail.com"))
         self.assertFalse(Enter_Google_Email_Page.click_Next())
+        
 
 
         
-
 
     '''def test_SignIn_ForgetPassword2(self):
         main_page = page.MainPage(self.driver)
@@ -107,7 +111,7 @@ class TwitterHomePage(unittest.TestCase):
 
 
     def test_HomePage_Tweet(self):
-        self.driver.get("http://localhost:3000/home")
+        self.driver.get("http://www.twi-jay.xyz/home")
         Main_Page = page.MainPage2(self.driver)
         Main_Page.click_Home()
         home_page = page.HomePage(self.driver)
@@ -116,7 +120,7 @@ class TwitterHomePage(unittest.TestCase):
         
 
     def test_ExploreSearch(self):
-        self.driver.get("http://localhost:3000/home")
+        self.driver.get("http://www.twi-jay.xyz/home")
         Main_Page = page.MainPage2(self.driver)
         Main_Page.click_Explore()
         explore_page = page.ExplorePage(self.driver)
@@ -134,7 +138,7 @@ class TwitterHomePage(unittest.TestCase):
         notifications_page.click_Mentions()'''
         
     def test_ProfileEdit(self):
-        self.driver.get("http://localhost:3000/home")
+        self.driver.get("http://www.twi-jay.xyz/home")
         Main_Page = page.MainPage2(self.driver)
         Main_Page.click_Profile()
         profile_page = page.ProfilePage(self.driver)
@@ -148,17 +152,17 @@ class TwitterHomePage(unittest.TestCase):
         self.assertFalse(Edit_Page.click_Save())
 
     def test_ProfileFollow(self):
-        self.driver.get("http://localhost:3000/home")
+        self.driver.get("http://www.twi-jay.xyz/home")
         Main_Page = page.MainPage2(self.driver)
         Main_Page.click_Profile()
         profile_page = page.ProfilePage(self.driver)
         profile_page.click_Followers()
-        self.driver.get("http://localhost:3000/Profile")
+        self.driver.get("http://www.twi-jay.xyz/Profile")
         self.assertFalse(profile_page.click_Following())
 
 
     def test_Admin(self):
-        self.driver.get("http://localhost:3000/adminPage")
+        self.driver.get("http://www.twi-jay.xyz/adminPage")
         admin_page = page.AdminPage(self.driver)
         admin_page.click_Home()
         self.driver.implicitly_wait(100)
