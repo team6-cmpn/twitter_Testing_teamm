@@ -1,5 +1,5 @@
-from element import BasePageElement
-from locator import MainPageLocators
+#from element import BasePageElement
+from locator import MainPageLocators, SettingsPageLocators
 from locator import SignUpWithGooglePageLocators
 from locator import SignUpPhoneOrMailPageLocators
 from locator import SignInPageLocators 
@@ -10,6 +10,11 @@ from locator import NotificationsPageLocators
 from locator import ProfilePageLocators
 from locator import EditProfilePageLocators
 from locator import AdminPageLocators
+from locator import SettingsPageLocators
+from locator import TweetPageLocators
+from selenium.webdriver.common.keys import Keys
+
+
 
 
 class BasePage(object):
@@ -174,17 +179,44 @@ class MainPage2(BasePage):
         element = self.driver.find_element(*MainPage2Locators.Settings)
         element.click()
 
-    '''def click_Tweet(self):
-        element = self.driver.find_element(*MainPageLocators.Tweet)
-        element.click()'''
+    def click_Tweet(self):
+        element = self.driver.find_element(*MainPage2Locators.Tweet)
+        element.click()
 
     def click_Username(self):
-        element = self.driver.find_element(*MainPageLocators.Username)
+        element = self.driver.find_element(*MainPage2Locators.Username)
         element.click()
 
     def click_Admin(self):
-        element = self.driver.find_element(*MainPageLocators.Admin)
+        element = self.driver.find_element(*MainPage2Locators.Admin)
         element.click()
+
+    def click_UsernameButtons(self):
+        element = self.driver.find_element(*MainPage2Locators.Username_buttons)
+        element.click()
+
+    def click_Logout(self):
+        element = self.driver.find_element(*MainPage2Locators.Logout)
+        element.click()
+
+    def click_Logout2(self):
+        element = self.driver.find_element(*MainPage2Locators.Logout2)
+        element.click()
+
+    def click_WhoToFollow(self):
+        element = self.driver.find_element(*MainPage2Locators.WhoToFollow)
+        element.click()
+
+    def click_Unfollow(self):
+        element = self.driver.find_element(*MainPage2Locators.Unfollow)
+        element.click()
+
+    def enter_Search(self, str):
+        element = self.driver.find_element(*MainPage2Locators.SearchBar)
+        element.send_keys(str)
+        self.driver.implicitly_wait(100)
+        element.send_keys(Keys.ENTER)
+
 
 class HomePage(BasePage):
     def enter_Tweet(self, str):
@@ -283,3 +315,118 @@ class AdminPage(BasePage):
     def click_Users(self):
         element = self.driver.find_element(*AdminPageLocators.Users)
         element.click()
+    
+    def click_Block(self):
+        element = self.driver.find_element(*AdminPageLocators.Block)
+        element.click()
+
+    def enter_Days(self,str):
+        element = self.driver.find_element(*AdminPageLocators.NumberOfDays)
+        element.send_keys(str)
+
+    def click_Submit(self):
+        element = self.driver.find_element(*AdminPageLocators.Submit)
+        element.click()
+
+class Settings(BasePage):
+    def click_YourAccount(self):
+        element = self.driver.find_element(*SettingsPageLocators.YourAccount)
+        element.click()
+    
+    def click_AccountInformation(self):
+        element = self.driver.find_element(*SettingsPageLocators.Account_Information)
+        element.click()
+
+    def click_Username(self):
+        element = self.driver.find_element(*SettingsPageLocators.Username)
+        element.click()
+
+    def enter_Username(self,str):
+        element = self.driver.find_element(*SettingsPageLocators.Change_Username)
+        element.send_keys(str)
+
+    def click_SaveUsername(self):
+        element = self.driver.find_element(*SettingsPageLocators.SaveName)
+        element.click()
+
+    def click_Phone(self):
+        element = self.driver.find_element(*SettingsPageLocators.Phone)
+        element.click()
+
+    def enter_Phone(self,str):
+        element = self.driver.find_element(*SettingsPageLocators.Change_Phone)
+        element.send_keys(str)
+
+    def click_SaveNumber(self):
+        element = self.driver.find_element(*SettingsPageLocators.SaveNumber)
+        element.click()
+
+    def click_Email(self):
+        element = self.driver.find_element(*SettingsPageLocators.Email)
+        element.click()
+
+    def enter_Email(self,str):
+        element = self.driver.find_element(*SettingsPageLocators.Change_Email)
+        element.send_keys(str)
+
+    def click_SaveMail(self):
+        element = self.driver.find_element(*SettingsPageLocators.SaveMail)
+        element.click()
+
+    def click_ChangePassword(self):
+        element = self.driver.find_element(*SettingsPageLocators.Change_Password)
+        element.click()
+
+    def enter_Password(self,str):
+        element = self.driver.find_element(*SettingsPageLocators.Password)
+        element.send_keys(str)
+
+    def enter_NewPassword(self,str):
+        element = self.driver.find_element(*SettingsPageLocators.NewPassword)
+        element.send_keys(str)
+
+    def enter_ConfirmPassword(self,str):
+        element = self.driver.find_element(*SettingsPageLocators.Confirm_Password)
+        element.send_keys(str)
+
+    def click_SavePassword(self):
+        element = self.driver.find_element(*SettingsPageLocators.SavePassword)
+        element.click()
+
+    def click_PrivacyAndSafety(self):
+        element = self.driver.find_element(*SettingsPageLocators.Privacy_And_Safety)
+        element.click()
+
+    def click_MuteAndBlock(self):
+        element = self.driver.find_element(*SettingsPageLocators.Mute_And_Block)
+        element.click()
+
+    def click_BlockedAccounts(self):
+        element = self.driver.find_element(*SettingsPageLocators.Blocked_Account)
+        element.click()
+
+    def click_MutedAccounts(self):
+        element = self.driver.find_element(*SettingsPageLocators.Muted_Accounts)
+        element.click()
+
+    def click_DeactivateYourAccount(self):
+        element = self.driver.find_element(*SettingsPageLocators.Deactivate)
+        element.click()
+
+    def click_Deactivate(self):
+        element = self.driver.find_element(*SettingsPageLocators.Deactivate_Button)
+        element.click()
+
+class TweetPage(BasePage):
+    def enter_Tweet(self, str):
+        element = self.driver.find_element(*TweetPageLocators.TweetBar)
+        element.send_keys(str)
+
+    def enter_Mentions(self, str):
+        element = self.driver.find_element(*TweetPageLocators.MentionsBar)
+        element.send_keys(str)
+
+    def click_Tweet(self):
+        element = self.driver.find_element(*TweetPageLocators.TweetButton)
+        element.click()
+        
